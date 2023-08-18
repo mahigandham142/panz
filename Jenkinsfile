@@ -10,8 +10,8 @@ pipeline {
          whoami
          DOCKER_LOGIN_PASSWORD=$(aws ecr get-login-password  --region ap-south-1)
          docker login -u AWS -p $DOCKER_LOGIN_PASSWORD https://351836203514.dkr.ecr.ap-south-1.amazonaws.com
-         docker build -t 351836203514.dkr.ecr.ap-south-1.amazonaws.com/demo:SAMPLE-PROJECT-${BUILD_NUMBER} .
-         docker push 351836203514.dkr.ecr.ap-south-1.amazonaws.com/demo:SAMPLE-PROJECT-${BUILD_NUMBER}
+         docker build -t 351836203514.dkr.ecr.ap-south-1.amazonaws.com/sample:SAMPLE-PROJECT-${BUILD_NUMBER} .
+         docker push 351836203514.dkr.ecr.ap-south-1.amazonaws.com/sample:SAMPLE-PROJECT-${BUILD_NUMBER}
           
 	  '''
      }   
