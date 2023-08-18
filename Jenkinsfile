@@ -1,5 +1,5 @@
 pipeline {
-  agent any trigger
+  agent any
   stages {
    stage('Docker build and push') {
       steps {
