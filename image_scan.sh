@@ -1,7 +1,7 @@
 #!/bin/bash
-repo_name=sample
+repo_name=demo
 image_tag=SAMPLE-PROJECT-${BUILD_NUMBER}
-arn=arn:aws:sns:ap-south-1:351836203514:sample
+arn=arn:aws:sns:ap-south-1:207203418893:sample
 critical_vulnr=$(aws ecr describe-image-scan-findings --repository-name $repo_name --image-id imageTag=$image_tag | grep -i "findingSeverityCounts" -A 5 | grep -i critical | cut -d ":" -f 2 | tr -d ",")
 high_vulnr=$(aws ecr describe-image-scan-findings --repository-name $repo_name --image-id imageTag=$image_tag | grep -i "findingSeverityCounts" -A 5 | grep -i high | cut -d ":" -f 2 | tr -d ",")
 
