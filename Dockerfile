@@ -1,5 +1,4 @@
 # syntax=docker/dockerfile:1
-Access_key=AKIATAPSJIMGVFGKS2WF
 FROM mcr.microsoft.com/dotnet/sdk:3.1-alpine AS build-env
 
 RUN apk --no-cache upgrade musl
