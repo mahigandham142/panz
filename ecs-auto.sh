@@ -2,7 +2,6 @@
 SERVICE="demo"
 CLUSTER_NAME="demo"
 AWS_REGION="ap-south-1"
-export AWS_PROFILE=default
 
 # Register a new Task definition 
 aws ecs register-task-definition --family demo --cli-input-json file://task-new.json --region $AWS_REGION
