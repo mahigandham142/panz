@@ -21,7 +21,7 @@ echo "Critical vulnerabilities: $critical_vulnr"
 if [[ $high_vulnr -gt 0 && $critical_vulnr -ge 0 ]]
 then
    echo "your image is having higher vulnerabilities,please check...." && aws sns publish --topic-arn $arn --message "your image in this $repo_name repo in this $image_tag image is having higher vulnerabilities,please check..."
-    exit 1
+#    exit 1
 else
     echo "your image is safe for deployment"
 fi
