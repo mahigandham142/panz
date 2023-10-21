@@ -3,12 +3,12 @@
        { 
           
           "essential": true,
-          "image": "971076122335.dkr.ecr.ap-south-1.amazonaws.com/sample:SAMPLE-PROJECT-buildNumber",
+          "image": "971076122335.dkr.ecr.us-east-2.amazonaws.com/sample:SAMPLE-PROJECT-buildNumber",
           "logConfiguration": { 
              "logDriver": "awslogs",
              "options": { 
-                "awslogs-group" : "/ecs/anuj-new",
-                "awslogs-region": "ap-south-1",
+                "awslogs-group" : "/ecs/demo-new-oct",
+                "awslogs-region": "us-east-2",
                 "awslogs-stream-prefix": "ecs"
              }
           },
@@ -25,7 +25,7 @@
     "networkMode": "awsvpc",
     "cpu": "256",
     "executionRoleArn": "arn:aws:iam::971076122335:role/ecstasknewman",
-    "family": "anuj-new",
+    "family": "demo-new-oct",
     "memory": "1024",
     "requiresCompatibilities": [ 
         "FARGATE" 
