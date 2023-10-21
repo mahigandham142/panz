@@ -7,6 +7,7 @@ pipeline {
    stage('Docker build and push') {
       steps {
         sh '''
+	sleep 20
          whoami
          DOCKER_LOGIN_PASSWORD=$(aws ecr get-login-password  --region us-east-2)
          docker login -u AWS -p $DOCKER_LOGIN_PASSWORD https://971076122335.dkr.ecr.us-east-2.amazonaws.com
