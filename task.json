@@ -7,7 +7,7 @@
           "logConfiguration": { 
              "logDriver": "awslogs",
              "options": { 
-                "awslogs-group" : "/ecs/demo-new-oct",
+                "awslogs-group" : "/ecs/sample-new-oct",
                 "awslogs-region": "us-east-2",
                 "awslogs-stream-prefix": "ecs"
              }
@@ -25,7 +25,7 @@
     "networkMode": "awsvpc",
     "cpu": "256",
     "executionRoleArn": "arn:aws:iam::971076122335:role/ecstasknewman",
-    "family": "demo-new-oct",
+    "family": "sample-new-oct",
     "memory": "1024",
     "requiresCompatibilities": [ 
         "FARGATE" 
