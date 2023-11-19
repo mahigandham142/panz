@@ -8,7 +8,7 @@ pipeline {
       steps {
         sh '''
 	export PATH="$PATH:/root/.dotnet/tools"
-        dotnet sonarscanner
+        dotnet-sonarscanner
 	dotnet sonarscanner begin /k:"sonar" /d:sonar.host.url="http://af92004913f324520ba8606446672f5d-467569492.us-east-2.elb.amazonaws.com:9000"  /d:sonar.login="4ae5b1280f09145d7da83688c18a4b4b4f6fbd38"
         dotnet build
         dotnet sonarscanner end /d:sonar.login="4ae5b1280f09145d7da83688c18a4b4b4f6fbd38"
