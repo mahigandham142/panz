@@ -14,7 +14,17 @@ pipeline {
   
 	  '''
      }   
-   } 	  
+   }
+  stage('Sonar Scan') {
+      steps {
+        sh '''
+	sleep 20
+        chmod +x sonar_scan.sh
+        bash sonar_scan.sh
+          
+	  '''
+     }   
+   }
    stage('Docker build and push') {
       steps {
         sh '''
