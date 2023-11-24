@@ -56,7 +56,7 @@ pipeline {
 	    kubectl apply -f svc.yml
 	 '''
        }   
-  }
+    }
 //       stage('ecs deploy') {
 //       steps {
 //           sh '''
