@@ -15,7 +15,7 @@ pipeline {
 	  '''
      }   
    }
-  stage('Sonar Scan') {
+  stage('Sonar Quality Gate Check') {
       steps {
         sh '''
 	sleep 20
