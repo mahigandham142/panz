@@ -48,27 +48,26 @@ pipeline {
 	  '''
      }   
    }
-    // stage('eks deploy') {
-    //   steps {
-	      
-    //     sh '''
-    //        aws eks update-kubeconfig --name demo --regio ap-south-1
-    //        sed "s/buildNumber/${BUILD_NUMBER}/g" deploy.yml > deploy-new.yml
-	//    kubectl apply -f deploy-new.yml
-	//    kubectl apply -f svc.yml
-	// '''
-    //   }   
-    // }
-       stage('ecs deploy') {
-         steps {
-           sh '''
-             chmod +x changebuildnumber.sh
-             ./changebuildnumber.sh $BUILD_NUMBER
-	     sh -x ecs-auto.sh
-             '''
-        }    
-       }
-}
+    stage('eks deploy') {
+      steps {
+        sh '''
+            aws eks update-kubeconfig --name demo --regio us-east-2
+            sed "s/buildNumber/${BUILD_NUMBER}/g" deploy.yml > deploy-new.yml
+	    kubectl apply -f deploy-new.yml
+	    kubectl apply -f svc.yml
+	 '''
+       }   
+  }
+//       stage('ecs deploy') {
+//       steps {
+//           sh '''
+//           chmod +x changebuildnumber.sh
+//             ./changebuildnumber.sh $BUILD_NUMBER
+//	     sh -x ecs-auto.sh
+//             '''
+//        }    
+//       }
+// }
 // post {
 //     failure {
 //         mail to: 'unsolveddevops@gmail.com',
