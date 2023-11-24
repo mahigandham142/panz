@@ -34,7 +34,7 @@ spec:
 
       - name: nginx
 
-        image: 971076122335.dkr.ecr.ap-south-1.amazonaws.com/sample:SAMPLE-PROJECT-buildNumber
+        image: nginx:1.14.2
 
         ports:
 
