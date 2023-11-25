@@ -48,17 +48,30 @@ pipeline {
 	  '''
      }   
    }
-    stage('eks deploy') {
+     stage('argocd deploy') {
       steps {
         sh '''
         aws eks update-kubeconfig --name demo --region us-east-2
-	    sed "s/changebuildnumber/${BUILD_NUMBER}/g" deploy.yml > deploy-new.yml
-	    kubectl apply -f deploy-new.yml
-	    kubectl apply -f svc.yml
-
-	  '''
+  	    sed "s/changebuildnumber/${BUILD_NUMBER}/g" deploy.yml
+  	    kubectl apply -f deploy-new.yml
+  	    kubectl apply -f svc.yml
+  
+  	  '''
      }   
    }
+} 
+	  
+  //  stage('eks deploy') {
+  //    steps {
+  //      sh '''
+  //      aws eks update-kubeconfig --name demo --region us-east-2
+  //	    sed "s/changebuildnumber/${BUILD_NUMBER}/g" deploy.yml > deploy-new.yml
+  //	    kubectl apply -f deploy-new.yml
+  //	    kubectl apply -f svc.yml
+  //
+  //	  '''
+  //   }   
+  // }
 }
 //       stage('ecs deploy') {
 //       steps {
