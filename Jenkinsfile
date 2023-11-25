@@ -53,6 +53,10 @@ pipeline {
         sh '''
         aws eks update-kubeconfig --name demo --region us-east-2
   	    sed "s/changebuildnumber/${BUILD_NUMBER}/g" deploy.yml
+            git clone https://github.com/mahigandham142/panz.git
+	    git add kubernetes/deploy.yml
+            git commit "eks deployment"
+	    git push -u origin master
   	    kubectl apply -f deploy-new.yml
   	    kubectl apply -f svc.yml
   
