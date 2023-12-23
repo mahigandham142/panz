@@ -76,7 +76,7 @@ pipeline {
   //	  '''
   //   }   
   // }
-}
+// }
 //       stage('ecs deploy') {
 //       steps {
 //           sh '''
