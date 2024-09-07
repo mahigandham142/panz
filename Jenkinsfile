@@ -1,28 +1,30 @@
 pipeline {
-  agent {
-    label 'slave'
-  }
+  agent any
   triggers {
     pollSCM '* * * * *'
   }
+  environment {
+    DOCKER_REGISTRY = 607780497941.dkr.ecr.ap-south-1.amazonaws.com
+    AWS_DEFAULT_REGION = ap-south-1
+    REPO_DEV_NAME = alesund/airavat-remote
+    IMAGE_TAG = $BUILD_NUMBER
+    AWS_SNS_TOPIC_ARN = arn:aws:sns:ap-south-1:607780497941:topspin-automation
+    ARGOCD_API_SERVER = "https://argocd.topspingame.com"
+    APPLICATION_NAME = "alesund-topspin-dev-sf"
+  }
   stages {
-   stage('sonar scanner') {
+   stage('ConfigCheck') {
       steps {
         sh '''
-        export PATH="$PATH:/var/lib/jenkins/.dotnet/tools"
-      	dotnet sonarscanner begin /k:"sonar" /d:sonar.host.url="http://af92004913f324520ba8606446672f5d-467569492.us-east-2.elb.amazonaws.com:9000"  /d:sonar.login="4ae5b1280f09145d7da83688c18a4b4b4f6fbd38"
-        dotnet build
-        dotnet sonarscanner end /d:sonar.login="4ae5b1280f09145d7da83688c18a4b4b4f6fbd38"
+         trivy config .
   
 	  '''
      }   
    }
-   stage('Sonar Quality Gate Check') {
+   stage('docker') {
       steps {
         sh '''
-	sleep 20
-        chmod +x sonar_scan.sh
-        bash sonar_scan.sh
+	      docker build -t $DOCKER_REGISTRY/$REPO_DEV_NAME:$IMAGE_TAG .
           
 	  '''
      }   
